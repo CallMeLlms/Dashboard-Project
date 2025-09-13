@@ -1,7 +1,19 @@
-import Link from "next/link"
+"use client"
 
-export default function DrawernNavigation () {
+import Link from "next/link"
+import { useEffect } from "react"
+import { DrawerNavTypes } from "./ComponentsTypes" 
+
+type DrawerTypes = {
+    setOpenDrawnerNav: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function DrawernNavigation ({setOpenDrawnerNav} : DrawerTypes) {
     
+    useEffect(() => {
+        
+    },)
+
     const navItems = [
         {name: "Home", href: ""},
         {name: "Other", href: ""},
@@ -10,9 +22,10 @@ export default function DrawernNavigation () {
 
     return (
         <>
-        <div className="absolute h-full w-[180px] bg-amber-800">
-            <div className="flex flex-col w-full h-full items-center">
 
+        {/* Base 80px, mas 180px */}
+        <div className="absolute h-full w-[80px] bg-amber-800">
+            <div className="flex flex-col w-full h-full items-center">
                 {navItems.map((item, index) => (
                     <div
                     key={index}
