@@ -46,6 +46,9 @@ export default function Home() {
             ))}
 
             <ChartAreaDefault/>
+            <ChartAreaDefault/>
+            <ChartAreaDefault/>
+            
             {/* <div className="rounded-2xl border p-4 shadow-sm">Card 3</div> */}
           </div>
         </main>
