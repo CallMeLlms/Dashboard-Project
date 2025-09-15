@@ -1,50 +1,56 @@
 "use client"
 
 import { useState } from "react";
-import DrawernNavigation from "./components/DrawerNav";
+import DrawernNavigation from "@/components/custom/DrawerNav";
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardAction,
-  CardDescription,
-  CardContent,
-} from "@/components/ui/card";
-
+import CustomCardComp from "@/components/custom/CustomCard";
+import ChartAreaDefault from "@/components/custom/CardChart"; 
 export default function Home() {
   const [openDrawerNav, setOpenDrawerNav] = useState<boolean>(false);
 
+  const repeat = 3
   return (
-    <div className="w-screen h-screen">
-      <main className="flex h-full w-full">
+    <div className="flex h-screen">
+      {/* Sidebar */}
 
+      <div className="p-2">
         <DrawernNavigation
           setOpenDrawnerNav={setOpenDrawerNav}
         />
+      </div>
 
-        <div className="flex flex-col w-full p-6">
+      {/* <aside className="w-64 bg-muted border-r p-4">
+        <h1 className="text-xl font-bold">My Dashboard</h1>
+      </aside> */}
 
-          <div className="">
-            <Card>
-              <CardHeader>
-                <CardTitle>Card Title</CardTitle>
-                <CardDescription>Card Description</CardDescription>
-                <CardAction>Card Action</CardAction>
-              </CardHeader>
-              <CardContent>
-                <p>Card Content</p>
-              </CardContent>
-              <CardFooter>
-                <p>Card Footer</p>
-              </CardFooter>
-            </Card>
+      {/* Main Content */}
+      <div className="flex flex-col flex-1">
+        
+        {/* Component */}
+        <header className="h-16 border-b flex items-center justify-between px-6 rounded-2xl bg-slate-950 mt-2 mr-2">
+          <div className="text-white">Search / Breadcrumb</div>
+          
+          {/* Drop Down filter */}
+          <div className="text-white">User Menu</div>
+        </header>
+
+        {/* Dashboard Content */}
+        <main className="flex-1 overflow-y-auto p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Example widgets */}
+            {/* Widgest compomnents */}
+            
+            
+            {[...Array(repeat)].map((_, i) => (
+              <CustomCardComp key={i}/>
+            ))}
+
+            <ChartAreaDefault/>
+            {/* <div className="rounded-2xl border p-4 shadow-sm">Card 3</div> */}
           </div>
-
-        </div>
-
-      </main>
+        </main>
+      </div>
     </div>
+
   );
 }
