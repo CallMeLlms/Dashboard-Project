@@ -7,6 +7,7 @@ import CustomCardComp from "@/components/custom/CustomCard";
 import ChartAreaDefault from "@/components/custom/CardChart"; 
 import { ChartBarMixed } from "@/components/custom/BarChart";
 
+import {Papa} from "papaparse"
 
 export default function Home() {
   const [openDrawerNav, setOpenDrawerNav] = useState<boolean>(false);
@@ -54,7 +55,6 @@ export default function Home() {
             <div className="col-span-2">
               <ChartAreaDefault/>
             </div>
-            
             
             {/* <div className="rounded-2xl border p-4 shadow-sm">Card 3</div> */}
           </div>
