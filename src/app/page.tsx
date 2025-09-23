@@ -11,6 +11,37 @@ import Papa from "papaparse"
 export default function Home() {
   const [openDrawerNav, setOpenDrawerNav] = useState<boolean>(false);
 
+  const [loadRows, setLoadRows] = useState<any[]>([]);
+
+  useEffect(() => {
+
+    const csvData = async () => {
+      try {
+        const response = await fetch('/studDataPerformance.csv')
+        if (!response.ok) {
+          throw new Error("Csv failed to load");
+        }
+        const csvText = await response.text();
+
+        Papa.parse(csvText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: (results) => {
+            setLoadRows(results.data)
+          },
+
+          error: (err: Error) => {
+            console.error("Paparse Error", err.message)
+          }
+        })
+      } catch (error) {
+        console.error("Error fetching/parsing csv", error)
+      }
+    }
+    csvData();
+  }, [])
+
+
   const repeat = 3
   return (
     <div className="flex h-screen">
@@ -43,6 +74,7 @@ export default function Home() {
             {/* Example widgets */}
             {/* Widgest compomnents */}
 
+            
             {[...Array(repeat)].map((_, i) => (
               <CustomCardComp key={i} />
             ))}
