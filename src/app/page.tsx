@@ -11,36 +11,23 @@ import Papa from "papaparse"
 export default function Home() {
   const [openDrawerNav, setOpenDrawerNav] = useState<boolean>(false);
 
-  const [loadRows, setLoadRows] = useState<any[]>([]);
-
   useEffect(() => {
-
-    const csvData = async () => {
+    const burat =  async () => {
       try {
-        const response = await fetch('/studDataPerformance.csv')
-        if (!response.ok) {
-          throw new Error("Csv failed to load");
-        }
-        const csvText = await response.text();
-
-        Papa.parse(csvText, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (results) => {
-            setLoadRows(results.data)
-          },
-
-          error: (err: Error) => {
-            console.error("Paparse Error", err.message)
-          }
-        })
-      } catch (error) {
-        console.error("Error fetching/parsing csv", error)
+        const res = await fetch('/api/parseCsv')
+        if (!res.ok) {
+          throw new Error()
+        } 
+        const data = await res.json();
+        console.log('rows:', data)
+        console.log('first 5:', data.slice(0, 5))
+      } catch(error) {
+        console.error("Failed to fetch CSV from route", error)
       }
     }
-    csvData();
-  }, [])
 
+    burat()
+  }, [])
 
   const repeat = 3
   return (
