@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import CustomCardComp from "@/components/custom/CustomCard";
 import ChartAreaDefault from "@/components/custom/CardChart";
 import { ChartBarMixed } from "@/components/custom/BarChart";
+import { DropdownMenuCheckboxes } from "@/components/custom/DropdownMenu"
 import Papa from "papaparse"
 
 export default function Home() {
@@ -52,7 +53,10 @@ export default function Home() {
           <div className="text-white">Search / Breadcrumb</div>
 
           {/* Drop Down filter */}
-          <div className="text-white">User Menu</div>
+          <div className="text-white">User Menu
+
+            <DropdownMenuCheckboxes/>
+          </div>
         </header>
 
         {/* Dashboard Content */}

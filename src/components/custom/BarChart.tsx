@@ -57,28 +57,37 @@ const chartConfig = {
 } satisfies ChartConfig
 
 
-const [studData, setStudData] = useState([]);
-
-useEffect(() => {
-  const getData = async() => {
-    try {
-      const response = await fetch('/api/parseCsv')
-        const data = await response.json();
-        setStudData(data)
-
-    } catch(err) {
-      console.log(err)
-    }
-  }
-
-  getData();
-}, [])
 
 export function ChartBarMixed() {
+
+// remove any
+  const [studData, setStudData] = useState<any>([]);
+
+  useEffect(() => {
+    const getData = async() => {
+      try {
+        const response = await fetch('/api/parseCsv')
+          const data = await response.json();
+          setStudData(data)
+          
+
+
+
+      } catch(err) {
+        console.log(err)
+      }
+    }
+
+    getData();
+  }, [])
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Mixed</CardTitle>
+        <CardTitle>
+  
+        </CardTitle>
+
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
