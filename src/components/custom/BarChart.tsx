@@ -1,6 +1,6 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
+import { ClipboardType, TrendingUp } from "lucide-react"
 import { Bar, BarChart, XAxis, YAxis } from "recharts"
 
 import {
@@ -17,6 +17,8 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+import { useEffect, useState } from "react"
+import { error } from "console"
 
 export const description = "A mixed bar chart"
 
@@ -53,6 +55,24 @@ const chartConfig = {
     color: "var(--chart-5)",
   },
 } satisfies ChartConfig
+
+
+const [studData, setStudData] = useState([]);
+
+useEffect(() => {
+  const getData = async() => {
+    try {
+      const response = await fetch('/api/parseCsv')
+        const data = await response.json();
+        setStudData(data)
+
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  getData();
+}, [])
 
 export function ChartBarMixed() {
   return (

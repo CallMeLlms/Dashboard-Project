@@ -11,6 +11,7 @@ import Papa from "papaparse"
 export default function Home() {
   const [openDrawerNav, setOpenDrawerNav] = useState<boolean>(false);
 
+  
   useEffect(() => {
     const burat =  async () => {
       try {
@@ -25,7 +26,6 @@ export default function Home() {
         console.error("Failed to fetch CSV from route", error)
       }
     }
-
     burat()
   }, [])
 
