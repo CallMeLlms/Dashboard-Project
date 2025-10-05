@@ -38,7 +38,6 @@ export default function CustomCardComp({}) {
       const handleData = useMemo(() => {
         const totalHoursStudied = studData.reduce((total: number, item: any) => total + item.Hours_Studied, 0)
         return totalHoursStudied
-
       }, [studData])
 
         
