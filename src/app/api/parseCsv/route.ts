@@ -21,7 +21,7 @@ export async function GET() {
         if (errors?.length) {
             console.error("CSV failed to parse")
         }
-        console.log(data)
+        // console.log(data)
         return NextResponse.json(data);
     } catch (error) {
         console.error(error);

@@ -19,42 +19,53 @@ export default function CustomCardComp({}) {
 
       const [studData, setStudData] = useState<any>([]);
     
+  
+
       useEffect(() => {
         const getData = async() => {
           try {
             const response = await fetch('/api/parseCsv')
               const data = await response.json();
-              setStudData(data)
-              
+              setStudData(data)     
           } catch(err) {
             console.log(err)
           }
         }
-    
         getData();
       }, [])
 
+      // useEffect(() => {
+       
+        
+
+      // }, [studData])
+      
+
+      // let parsedName = Object.keys(studData[0])[0]
+
+      // console.log(parsedName)
+
+      // console.log(parsedName)
     //   Use memo for this 1
       const handleData = useMemo(() => {
         const totalHoursStudied = studData.reduce((total: number, item: any) => total + item.Hours_Studied, 0)
         return totalHoursStudied
       }, [studData])
 
-        
-
     return (
         <>
-            <Card>
+            <Card className="border-2 border-[rgb(200,200,200)]">
                 <CardHeader>
-                    <CardTitle>{studData.length > 0 ? Object.keys(studData[0])[0] : 'No Data'}</CardTitle>
-                    <CardDescription>Card Description</CardDescription>
-                    <CardAction>Card Action</CardAction>
+                    <CardTitle
+                    className="text-2xl font-bold"
+                    >{studData.length > 0 ? Object.keys(studData[0])[0] : 'No Data'}</CardTitle>
+                    <CardDescription className="text-md font-medium">Hours Dedicated</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <p>{handleData}</p>
+                    <p className="text-4xl font-bold">{handleData}</p>
                 </CardContent>
                 <CardFooter>
-                    <p>Card Footer</p>
+                    
                 </CardFooter>
             </Card>
         </>
