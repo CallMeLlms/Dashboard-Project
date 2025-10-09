@@ -1,9 +1,4 @@
 // --- fix any later
-// export const TransformTitle = (obj: any) => {
-//   console.log(obj)
-//     {{ console.log("TransformTitle called with:", obj); }}
-// };
-
 export const CallAPI = async () => {
   try {
     const response = await fetch("/api/parseCsv");
@@ -12,12 +7,20 @@ export const CallAPI = async () => {
       return null;
     }
     const data = await response.json();
-
-    console.log("Data fetched from /api/parseCsv:", data);
-    // const keys = TransformTitle(data);
-    return data;
+    // console.log("Data fetched from /api/parseCsv:", data);
+    const keys = TransformTitle(data);
+    
+    return keys;
   } catch (err) {
     console.log(err);
     return null;
   }
+};
+
+
+
+export const TransformTitle = (obj: any) => {
+  let keys = Object.keys(obj[0])
+  debugger
+  return keys
 };
