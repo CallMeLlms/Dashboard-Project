@@ -9,6 +9,7 @@ import {
     CardContent,
 } from "@/components/ui/card";
 import { useEffect, useMemo, useState } from "react";
+import { ParsedTitleName } from "@/app/utils/nameParse";
 
 type CustomCardCompTypes = {
 
@@ -18,8 +19,8 @@ type CustomCardCompTypes = {
 export default function CustomCardComp({}) {
 
       const [studData, setStudData] = useState<any>([]);
-    
-  
+      const [titleParse, setTitleParsed] = useState<any>([]);
+
 
       useEffect(() => {
         const getData = async() => {
@@ -34,9 +35,23 @@ export default function CustomCardComp({}) {
         getData();
       }, [])
 
+      useEffect(() => {
+        const titleParsed = async () => {
+          try{
+            const response = await ParsedTitleName();
+            if(!response) {
+              console.log("Encountered error")
+            }
+            setTitleParsed(response)
+          } catch (err) {
+            console.log(err)
+
+          }
+        }
+        titleParsed();
+      }, [])
+
       // useEffect(() => {
-       
-        
 
       // }, [studData])
       
@@ -46,6 +61,7 @@ export default function CustomCardComp({}) {
       // console.log(parsedName)
 
       // console.log(parsedName)
+
     //   Use memo for this 1
       const handleData = useMemo(() => {
         const totalHoursStudied = studData.reduce((total: number, item: any) => total + item.Hours_Studied, 0)
@@ -58,7 +74,7 @@ export default function CustomCardComp({}) {
                 <CardHeader>
                     <CardTitle
                     className="text-2xl font-bold"
-                    >{studData.length > 0 ? Object.keys(studData[0])[0] : 'No Data'}</CardTitle>
+                    >{titleParse[0] === 'Hours_Studied' ? "Hours Studied" : "Cant fetch title"}</CardTitle>
                     <CardDescription className="text-md font-medium">Hours Dedicated</CardDescription>
                 </CardHeader>
                 <CardContent>

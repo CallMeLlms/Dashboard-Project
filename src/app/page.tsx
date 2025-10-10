@@ -13,6 +13,7 @@ import TestingComponent from "@/components/custom/testing";
 export default function Home() {
   const [openDrawerNav, setOpenDrawerNav] = useState<boolean>(false);
 
+
   // useEffect(() => {
   //   const burat = async () => {
   //     try {
@@ -30,12 +31,12 @@ export default function Home() {
   //   burat()
   // }, [])
 
-  const repeat = 1
+  const repeat = 3
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
 
-      <div className="p-2">
+      <div className="">
           <DrawernNavigation
             isOpen={openDrawerNav}
             setIsOpen={setOpenDrawerNav}
@@ -47,7 +48,7 @@ export default function Home() {
       </aside> */}
 
       {/* Main Content */}
-      <div className="flex flex-col flex-1">
+      <div className="pl-12 flex flex-col flex-1">
 
         {/* Component */}
         <header className="h-16 border-b flex items-center justify-between px-6 rounded-2xl bg-slate-950 mt-2 mr-2">
@@ -57,7 +58,7 @@ export default function Home() {
         </header>
 
         {/* Dashboard Content */}
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto mt-2 mr-2">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Example widgets */}
             {/* Widgest compomnents */}
@@ -67,6 +68,10 @@ export default function Home() {
               <CustomCardComp key={i} />
             ))}
 
+
+            {/* <ChartBarMixed/>
+
+            <ChartAreaDefault/> */}
           </div>
             <TestingComponent/>
         </main>

@@ -9,25 +9,24 @@ type DrawerTypes = {
 
 export default function DrawerNavigation({ isOpen, setIsOpen }: DrawerTypes) {
     
-    const navItems = [
-        { name: "Home", href: "#", icon: Home },
-        { name: "Analytics", href: "#", icon: BarChart3 },
-        { name: "Users", href: "#", icon: Users },
-        { name: "Settings", href: "#", icon: Settings },
-    ]
+    
 
     return (
         <div 
-            className={`relative h-full bg-slate-950 rounded-2xl transition-all duration-300 ease-in-out`}
+            className={`cursor-pointer absolute h-full bg-slate-950 transition-all duration-600 ease-in-out z-1 ${isOpen ? `-left-[0px]` : `-left-[150px]`}`}
+            onClick={() => setIsOpen(prev => (!prev))}
         >
             {/* Toggle Button */}
+            <div className={`flex flex-col w-full h-full`}>
+                
+                <div>
+                    <ChevronRight/>
+                </div>
 
-
-            <div className="flex flex-col w-full h-full">
                 <div className="flex gap-2 p-4 flex-col">
                     {/* Header */}
                     <div className={`mb-6 overflow-hidden transition-all duration-300`}>
-                        <h1 className={`text-md font-bold text-white whitespace-nowrap`}>
+                        <h1 className={`text-md font-bold text-white whitespace-nowrap ${isOpen ? `opacity` : ``}`}>
                             Student Dashboard
                         </h1>
                     </div>

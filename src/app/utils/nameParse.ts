@@ -1,5 +1,5 @@
 // --- fix any later
-export const CallAPI = async () => {
+export const ParsedTitleName = async () => {
   try {
     const response = await fetch("/api/parseCsv");
     if (!response.ok) {
@@ -21,6 +21,5 @@ export const CallAPI = async () => {
 
 export const TransformTitle = (obj: any) => {
   let keys = Object.keys(obj[0])
-  debugger
   return keys
 };
