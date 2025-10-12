@@ -70,9 +70,6 @@ export function ChartBarMixed() {
           const data = await response.json();
           setStudData(data)
           
-
-
-
       } catch(err) {
         console.log(err)
       }
