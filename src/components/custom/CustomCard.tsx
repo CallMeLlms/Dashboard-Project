@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/card";
 import { useEffect, useMemo, useState } from "react";
 import { ParsedTitleName } from "@/app/utils/nameParse";
+import { SkeletonSmall, SkeletonMedium, SkeletonLarge } from "../custom/skeletonLoader";
+
 
 type CustomCardCompTypes = {
 
@@ -51,17 +53,6 @@ export default function CustomCardComp({}) {
         titleParsed();
       }, [])
 
-      // useEffect(() => {
-
-      // }, [studData])
-      
-
-      // let parsedName = Object.keys(studData[0])[0]
-
-      // console.log(parsedName)
-
-      // console.log(parsedName)
-
     //   Use memo for this 1
       const handleData = useMemo(() => {
         const totalHoursStudied = studData.reduce((total: number, item: any) => total + item.Hours_Studied, 0)
@@ -74,7 +65,7 @@ export default function CustomCardComp({}) {
                 <CardHeader>
                     <CardTitle
                     className="text-2xl font-bold"
-                    >{titleParse[0] === 'Hours_Studied' ? "Hours Studied" : "Loading Title"}</CardTitle>
+                    >{titleParse[0] === 'Hours_Studied' ? "Hours Studied" : <SkeletonMedium/> }</CardTitle>
                     <CardDescription className="text-md font-medium">Hours Dedicated</CardDescription>
                 </CardHeader>
                 <CardContent>
