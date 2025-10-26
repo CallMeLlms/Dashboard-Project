@@ -65,7 +65,7 @@ export default function CustomCardComp({}) {
                 <CardHeader>
                     <CardTitle
                     className="text-2xl font-bold"
-                    >{titleParse[0] === 'Hours_Studied' ? "Hours Studied" : <SkeletonMedium/> }</CardTitle>
+                    >{titleParse[0] === 'Hours_Studied' ? "Hours Studied" : <SkeletonMedium className=""/> }</CardTitle>
                     <CardDescription className="text-md font-medium">Hours Dedicated</CardDescription>
                 </CardHeader>
                 <CardContent>

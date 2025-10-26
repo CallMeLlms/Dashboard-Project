@@ -31,7 +31,7 @@ export default function Home() {
   //   burat()
   // }, [])
 
-  const repeat = 3
+  const repeat = 2
   return (
     <div className="flex h-screen">
       {/* Sidebar */}

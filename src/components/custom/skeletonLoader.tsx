@@ -5,20 +5,19 @@ type SkeletonProps = {
 }
 
 
-
 const SkeletonSmall = ({} : SkeletonProps) => {
     return (
         <Skeleton className="w-[100px] h-[20px] rounded-sm bg-[rgba(94,94,94,0.4)]" />
     )
 }
 
-const SkeletonMedium = ({}) => {
+const SkeletonMedium = ({} : SkeletonProps) => {
     return (
         <Skeleton className="w-[140px] h-[40px] rounded-sm bg-[rgba(94,94,94,0.4)]" />
     )
 }
 
-const SkeletonLarge = ({}) => {
+const SkeletonLarge = ({} : SkeletonProps) => {
     return (
         <Skeleton className="w-[160px] h-[60px] rounded-sm bg-[rgba(94,94,94,0.4)]" />
     )
