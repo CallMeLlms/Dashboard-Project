@@ -1,4 +1,6 @@
 // --- fix any later
+
+
 export const ParsedTitleName = async () => {
   try {
     const response = await fetch("/api/parseCsv");
@@ -7,9 +9,10 @@ export const ParsedTitleName = async () => {
       return null;
     }
     const data = await response.json();
-    // console.log("Data fetched from /api/parseCsv:", data);
-    const keys = TransformTitle(data);
+    console.log("Data fetched from /api/parseCsv:", data);
     
+    const keys = TransformTitle(data);
+
     return keys;
   } catch (err) {
     console.log(err);
@@ -18,8 +21,15 @@ export const ParsedTitleName = async () => {
 };
 
 
-
 export const TransformTitle = (obj: any) => {
   let keys = Object.keys(obj[0])
   return keys
+};
+
+// Transform Data 
+export const GetCSVData = (CSV_DATA: any) => {
+  return CSV_DATA.map(({Access_to_Resources, Attendance} : any) => ({
+      testOne: Access_to_Resources,
+      testTwo: Attendance,
+  }));
 };

@@ -11,13 +11,13 @@ const SkeletonSmall = ({} : SkeletonProps) => {
     )
 }
 
-const SkeletonMedium = ({} : SkeletonProps) => {
+const SkeletonMedium = ({}) => {
     return (
         <Skeleton className="w-[140px] h-[40px] rounded-sm bg-[rgba(94,94,94,0.4)]" />
     )
 }
 
-const SkeletonLarge = ({} : SkeletonProps) => {
+const SkeletonLarge = ({}) => {
     return (
         <Skeleton className="w-[160px] h-[60px] rounded-sm bg-[rgba(94,94,94,0.4)]" />
     )

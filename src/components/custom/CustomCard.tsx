@@ -23,7 +23,6 @@ export default function CustomCardComp({}) {
       const [studData, setStudData] = useState<any>([]);
       const [titleParse, setTitleParsed] = useState<any>([]);
 
-
       useEffect(() => {
         const getData = async() => {
           try {
@@ -65,7 +64,12 @@ export default function CustomCardComp({}) {
                 <CardHeader>
                     <CardTitle
                     className="text-2xl font-bold"
-                    >{titleParse[0] === 'Hours_Studied' ? "Hours Studied" : <SkeletonMedium className=""/> }</CardTitle>
+                    >{titleParse[0] === 'Hours_Studied' ? "Hours Studied" : <SkeletonMedium/> }</CardTitle>
+
+                    <CardTitle
+                    className="text-2xl font-bold"
+                    >{titleParse[1]  ? `${titleParse[10]}` : <SkeletonMedium/> }</CardTitle>
+                    
                     <CardDescription className="text-md font-medium">Hours Dedicated</CardDescription>
                 </CardHeader>
                 <CardContent>

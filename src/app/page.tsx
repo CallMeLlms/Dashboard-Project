@@ -7,7 +7,7 @@ import CustomCardComp from "@/components/custom/CustomCard";
 import ChartAreaDefault from "@/components/custom/CardChart";
 import { ChartBarMixed } from "@/components/custom/BarChart";
 import Papa from "papaparse"
-import TestingComponent from "@/components/custom/testing";
+// import TestingComponent from "@/components/custom/testing";
 
 
 export default function Home() {
@@ -31,7 +31,7 @@ export default function Home() {
   //   burat()
   // }, [])
 
-  const repeat = 2
+  const repeat = 3
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -73,7 +73,7 @@ export default function Home() {
 
             <ChartAreaDefault/> */}
           </div>
-            <TestingComponent/>
+            {/* <TestingComponent/> */}
         </main>
       </div>
     </div>
