@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { CsvDataContext } from "../context/CsvDataProvider";
 
-// import "./globals.css" from "./globals.css";
+import "./globals.css" ;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body
       >
-        {children}
+        <CsvDataContext>
+          {children}
+        </CsvDataContext>
       </body>
     </html>
   );

@@ -1,20 +1,23 @@
-import { createContext, ReactNode, useState, useEffect } from "react";
+"use client"
+import { createContext, ReactNode, useState, useEffect, useContext } from "react";
 
 type CsvDataContextProps = {
   children: ReactNode;
 };
 
+type CsvRow = {
+  [key: string]: string | number | boolean | null;
+}
+
 type CsvDataContextType = {
-  csvData: any[];
+  csvData: CsvRow[];
   loading: boolean;
 };
 
-export const CSV_CONTEXT = createContext<CsvDataContextType | undefined>(
-  undefined
-);
+export const CSV_CONTEXT = createContext<CsvDataContextType | undefined>(undefined);
 
 export const CsvDataContext = ({ children }: CsvDataContextProps) => {
-  const [csvData, setCsvData] = useState<any[]>([]);
+  const [csvData, setCsvData] = useState<CsvRow[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -41,5 +44,14 @@ export const CsvDataContext = ({ children }: CsvDataContextProps) => {
       {children}
     </CSV_CONTEXT.Provider>
   );
-  
 };
+
+
+export function useCsvData () {
+  const context = useContext(CSV_CONTEXT);
+  
+  if(!context) {
+    throw new Error("csvData, must be used within CsvdataProvider")
+  }
+  return context;
+}
