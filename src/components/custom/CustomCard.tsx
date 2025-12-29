@@ -16,8 +16,6 @@ export default function CustomCardComp({ }) {
 
   const {csvData, loading} = useCsvData();
 
-  console.log(Object.keys(csvData[0]))
-  
   return (
     <>
       <Card className="border-2 border-[rgb(200,200,200)]">

@@ -1,6 +1,6 @@
 "use client"
 import { createContext, ReactNode, useState, useEffect, useContext } from "react";
-
+import { supabase } from "@/utils/supabaseClient";
 type CsvDataContextProps = {
   children: ReactNode;
 };
@@ -23,12 +23,15 @@ export const CsvDataContext = ({ children }: CsvDataContextProps) => {
   useEffect(() => {
     const fetchCsvData = async () => {
       try {
-        const response = await fetch("api/parse-csv");
-        if (!response.ok) {
-          throw new Error("Failed to fetch CSV");
+        const { data, error } = await supabase
+          .from<any, any>("student_performance")
+          .select("*");
+        if (error) {
+          console.error("Supabase error:", error);
+        } else {
+          console.log("Fetched data CONTEXT PROVIDER: ", data);
+          setCsvData(data);
         }
-        const data = await response.json();
-        setCsvData(data);
       } catch (err) {
         console.error("Failed to fetch", err);
       } finally {
@@ -47,10 +50,10 @@ export const CsvDataContext = ({ children }: CsvDataContextProps) => {
 };
 
 
-export function useCsvData () {
+export function useCsvData() {
   const context = useContext(CSV_CONTEXT);
-  
-  if(!context) {
+
+  if (!context) {
     throw new Error("csvData, must be used within CsvdataProvider")
   }
   return context;

@@ -8,28 +8,26 @@ import ChartAreaDefault from "@/components/custom/CardChart";
 import { ChartBarMixed } from "@/components/custom/BarChart";
 import Papa from "papaparse"
 // import TestingComponent from "@/components/custom/testing";
-
+import { supabase } from "@/utils/supabaseClient";
 
 export default function Home() {
   const [openDrawerNav, setOpenDrawerNav] = useState<boolean>(false);
+  
+   useEffect(() => {
+    const testing = async () => {
+      const { data, error } = await supabase
+        .from<any, any>("student_performance")
+        .select("*");
+      if (error) {
+        console.error("Supabase error:", error);
+      } else {
+        console.log("Fetched data:", data);
+      }
+    };
 
+    testing();
+  }, []);
 
-  // useEffect(() => {
-  //   const burat = async () => {
-  //     try {
-  //       const res = await fetch('/api/parseCsv')
-  //       if (!res.ok) {
-  //         throw new Error()
-  //       }
-  //       const data = await res.json();
-  //       console.log('rows:', data)
-  //       console.log('first 5:', data.slice(0, 5))
-  //     } catch (error) {
-  //       console.error("Failed to fetch CSV from route", error)
-  //     }
-  //   }
-  //   burat()
-  // }, [])
 
   const repeat = 3
   return (
