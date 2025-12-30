@@ -1,34 +1,18 @@
 "use client"
-
 import { useState, useEffect } from "react";
 import DrawernNavigation from "@/components/custom/DrawerNav";
 import { Button } from "@/components/ui/button"
 import CustomCardComp from "@/components/custom/CustomCard";
 import ChartAreaDefault from "@/components/custom/CardChart";
 import { ChartBarMixed } from "@/components/custom/BarChart";
-import Papa from "papaparse"
-// import TestingComponent from "@/components/custom/testing";
-import { supabase } from "@/utils/supabaseClient";
+import { UseFilteredCsv } from "../hooks/useFilteredCsv";
+
 
 export default function Home() {
   const [openDrawerNav, setOpenDrawerNav] = useState<boolean>(false);
+  // Testing
+  // console.log(UseFilteredCsv());
   
-   useEffect(() => {
-    const testing = async () => {
-      const { data, error } = await supabase
-        .from<any, any>("student_performance")
-        .select("*");
-      if (error) {
-        console.error("Supabase error:", error);
-      } else {
-        console.log("Fetched data:", data);
-      }
-    };
-
-    testing();
-  }, []);
-
-
   const repeat = 3
   return (
     <div className="flex h-screen">

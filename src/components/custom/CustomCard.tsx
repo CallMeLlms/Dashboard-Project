@@ -9,13 +9,13 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { useEffect, useMemo, useState } from "react";
-import { SkeletonSmall, SkeletonMedium, SkeletonLarge } from "./skeletonLoader";
+import { SkeletonSmall, SkeletonMedium, SkeletonLarge } from "./SkeletonLoader";
 import { useCsvData } from "@/context/CsvDataProvider";
 
 export default function CustomCardComp({ }) {
-
+  
   const {csvData, loading} = useCsvData();
-
+  
   return (
     <>
       <Card className="border-2 border-[rgb(200,200,200)]">
