@@ -1,12 +1,12 @@
 "use client"
 import { useState, useEffect } from "react";
-import DrawernNavigation from "@/components/custom/DrawerNav";
+import DrawernNavigation from "@/components/sidebar/DrawerNav";
 import { Button } from "@/components/ui/button"
-import CustomCardComp from "@/components/custom/CustomCard";
-import ChartAreaDefault from "@/components/custom/CardChart";
-import { ChartBarMixed } from "@/components/custom/BarChart";
+import CustomCardComp from "@/components/chart/CustomCard";
+import ChartAreaDefault from "@/components/chart/CardChart";
+import { ChartBarMixed } from "@/components/chart/BarChart";
 import { UseFilteredCsv } from "../hooks/useFilteredCsv";
-
+import { Header } from "@/components/header/Header";
 
 export default function Home() {
   const [openDrawerNav, setOpenDrawerNav] = useState<boolean>(false);
@@ -25,19 +25,9 @@ export default function Home() {
           />
       </div>
 
-      {/* <aside className="w-64 bg-muted border-r p-4">
-        <h1 className="text-xl font-bold">My Dashboard</h1>
-      </aside> */}
-
       {/* Main Content */}
       <div className="pl-12 flex flex-col flex-1">
-
-        {/* Component */}
-        <header className="h-16 border-b flex items-center justify-between px-6 rounded-2xl bg-slate-950 mt-2 mr-2">
-            <div className="text-white">Search / Breadcrumb</div>
-            <div className="text-white">User Menu
-          </div>
-        </header>
+        <Header/>
 
         {/* Dashboard Content */}
         <main className="flex-1 overflow-y-auto mt-2 mr-2">

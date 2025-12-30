@@ -9,7 +9,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { useEffect, useMemo, useState } from "react";
-import { SkeletonSmall, SkeletonMedium, SkeletonLarge } from "./SkeletonLoader";
+import { SkeletonSmall, SkeletonMedium, SkeletonLarge } from "../common/SkeletonLoader";
 import { useCsvData } from "@/context/CsvDataProvider";
 
 export default function CustomCardComp({ }) {

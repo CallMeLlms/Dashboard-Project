@@ -16,16 +16,14 @@ const items = [
 export default function DrawerNavigation({ isOpen, setIsOpen }: DrawerTypes) {
     return (
         <div
-            className={`cursor-pointer absolute h-full bg-slate-950 transition-all duration-600 ease-in-out z-1 ${isOpen ? `-left-[0px]` : `-left-[150px]`}`}>
+            className={`absolute h-full bg-slate-950 transition-all duration-600 ease-in-out z-1 ${isOpen ? `-left-[0px]` : `-left-[150px]`}`}>
             {/* Toggle Button */}
             <div className={`flex flex-col w-full h-full`}>
 
-                <div className="absolute left-38 z-1 h-full"
+                <div className="absolute left-38 z-1 h-full cursor-pointer"
                     onClick={() => setIsOpen(prev => (!prev))}
                 >
-                    <div className="relative translate-y-100 bg-black rounded-md transition-all duration-600 ease-in-out"
-
-                    >
+                    <div className="relative translate-y-100 bg-black rounded-md transition-all duration-600 ease-in-out">
                         {isOpen ? <><ChevronLeft style={{ color: "white" }} /></> : <><ChevronRight style={{ color: "white" }} /></>}
 
                     </div>
@@ -56,7 +54,6 @@ export default function DrawerNavigation({ isOpen, setIsOpen }: DrawerTypes) {
                         </div>
                     ))}
                 </div>
-
             </div>
         </div>
     )

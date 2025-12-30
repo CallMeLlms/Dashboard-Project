@@ -19,7 +19,7 @@ export const CSV_CONTEXT = createContext<CsvDataContextType | undefined>(undefin
 export const CsvDataContext = ({ children }: CsvDataContextProps) => {
   const [csvData, setCsvData] = useState<CsvRow[]>([]);
   const [loading, setLoading] = useState(true);
-
+  console.log(typeof csvData);
   useEffect(() => {
     const fetchCsvData = async () => {
       try {
